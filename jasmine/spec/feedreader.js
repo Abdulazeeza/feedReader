@@ -86,12 +86,12 @@ $(function() {
               const childrenFeed = [];  //creates an array 
 
             beforeEach(function(done){
-                loadFeed(0, done); //load the first feed
+                loadFeed(0); //load the first feed
                 
                 Array.from(feed.children).forEach(function(feedsChildern){ //convert children element of the feed to an array and loop through them
                     childrenFeed.push(feedsChildern.innerText); //adds the children element text into the array childrenFeed
                  });
-                
+                 loadFeed(1, done); //load the second feed
             });
 
             it('content actually changes', function(){   //check if content chnages
