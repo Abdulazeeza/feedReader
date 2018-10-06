@@ -91,8 +91,7 @@ $(function() {
                 Array.from(feed.children).forEach(function(feedsChildern){ //convert children element of the feed to an array and loop through them
                     childrenFeed.push(feedsChildern.innerText); //adds the children element text into the array childrenFeed
                  });
-
-                loadFeed(1, done); // load the second feed
+                
             });
 
             it('content actually changes', function(){   //check if content chnages
