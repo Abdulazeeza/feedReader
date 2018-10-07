@@ -5,4 +5,5 @@ This project is given by Udacity to their students to write a test for a web-bas
  * jasmine 
  * jquery
  
- Load the index.html file in your browser to see if all test pass
+ ## How to run
+ Load the index.html file in your browser and the page displays loading the udacity blog feed as the default feed, click the menu icon on the on the top left corner of the page to select which feed to display on the page , click on the any of the entry in page to load the link. 
