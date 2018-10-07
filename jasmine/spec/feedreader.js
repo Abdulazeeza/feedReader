@@ -55,51 +55,49 @@ $(function() {
         });
 
         it('changes visibility', function(){  // what is expected when the menu is hidden or visible
-                
-            const firstClass = body.classList;  // the class name of the body before click event on the menu icon
-            let newClasses;
-
-            menu.click( function(){  //when menu icon is clicked
-                newClasses = body.classList;     // get the class name of the body 
-            });
-
-             expect(firstClass).not.toEqual(newClasses);  // expects the class name of the body before click event to different after click event
-            });
-
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(false);
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(true);
           });
-        /* test suit name Initial Entries*/
+    });
+        // test suit name Initial Entries
          describe('Initial Entries', function(){ 
 
             beforeEach(function(done){   // calls the loadFeed and make sure it is done before proceeding
-                loadFeed(0, done);  //load the first feed
+                loadFeed(0, done); 
             });
 
-            it('completes its work', function(){  // check for at least a single entry within the .feed container
-                 const feed = document.querySelector('.feed');  //gets the .feed element using it class name
-                 expect(feed.children.length > 0).toBe(true);  //expects the children of .feed to be at least 1
+            it('completes its work and at least a single .entry element', function(){  // check for at least a single entry within the .feed container
+                 const feed = document.querySelector('.feed');  //gets the feed using it class name .feed
+                 const entry = feed.querySelector('.entry');  //gets the entry using it class name .entry
+                 expect(entry).toBeDefined();  //expects the entry to be defined
             });
 
          });
-          /*test suit named New Feed Selection*/
-           describe('New Feed Selection',function(){   
-              const feed = document.querySelector('.feed');  //get the feed using the class name .feed 
-              const childrenFeed = [];  //creates an array 
+          //test suit named New Feed Selection
+          describe('New Feed Selection',function(){   
+              const feed = $('.feed');  //get the feed using the class name .feed 
+              let firstFeed,
+              secondFeed;
 
-            beforeEach(function(done){
-                loadFeed(0); //load the first feed
-                
-                Array.from(feed.children).forEach(function(feedsChildern){ //convert children element of the feed to an array and loop through them
-                    childrenFeed.push(feedsChildern.innerText); //adds the children element text into the array childrenFeed
+                beforeEach(function(done){
+                 feed.empty();
+                 
+                 loadFeed(0, function(){    //load the first feed
+                      firstFeed = feed.find(allFeeds.url);
+                      done();
                  });
-                 loadFeed(1, done); //load the second feed
+    
+                 loadFeed(1,function(){  //load the second feed
+                     secondFeed = feed.find(allFeeds.url);  
+                     done();
+                 }); 
+
             });
 
             it('content actually changes', function(){   //check if content chnages
-                 
-                 Array.from(feed.children).forEach(function(feedsChildern, position){  //convert children element of the feed to an array and loop through
-                    childrenFeed.push(feedsChildern.innerText);  //adds the children element text into the array childrenFeed
-                    expect(feedsChildern.innerText).not.toEqual(childrenFeed[position]);  //expects the feeds to be different
-                 });
+                   expect(firstFeed).not.toBe(secondFeed);  //expects the feeds to be different
              });
 
          });
