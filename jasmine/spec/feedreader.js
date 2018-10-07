@@ -55,10 +55,10 @@ $(function() {
         });
 
         it('changes visibility', function(){  // what is expected when the menu is hidden or visible
-            menu.click();
-            expect(body.classList.contains('menu-hidden')).toBe(false);
-            menu.click();
-            expect(body.classList.contains('menu-hidden')).toBe(true);
+            menu.click(); //clicks the menu 
+            expect(body.classList.contains('menu-hidden')).toBe(false);  //when click event occurs expects the body not to have a class name of menu-hidden 
+            menu.click();  //clicks the menu
+            expect(body.classList.contains('menu-hidden')).toBe(true);   //when click event occurs expects the body  to have a class name of menu-hidden 
           });
     });
         // test suit name Initial Entries
@@ -82,15 +82,15 @@ $(function() {
               secondFeed;
 
                 beforeEach(function(done){
-                 feed.empty();
+                 feed.empty();  // clear all statement
                  
                  loadFeed(0, function(){    //load the first feed
-                      firstFeed = feed.find(allFeeds.url);
+                      firstFeed = feed.find(allFeeds.url);  //get the allFeeds url text
                       done();
                  });
     
                  loadFeed(1,function(){  //load the second feed
-                     secondFeed = feed.find(allFeeds.url);  
+                     secondFeed = feed.find(allFeeds.url);  //get the allFeeds url text
                      done();
                  }); 
 
