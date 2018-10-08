@@ -90,15 +90,12 @@ $(function() {
 
                       loadFeed(1,function(){  //load the second feed
                       secondFeed = feed.find(allFeeds.url);  //get the allFeeds url text
-                
-                       }); 
-                      
                       done();
+                    }); 
+                      
                  });
     
-                 
-
-            });
+});
 
             it('content actually changes', function(){   //check if content chnages
                    expect(firstFeed).not.toBe(secondFeed);  //expects the feeds to be different
