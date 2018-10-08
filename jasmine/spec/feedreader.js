@@ -70,8 +70,8 @@ $(function() {
 
             it('completes its work and at least a single .entry element', function(){  // check for at least a single entry within the .feed container
                  const feed = document.querySelector('.feed');  //gets the feed using it class name .feed
-                 const entry = feed.querySelector('.entry');  //gets the entry using it class name .entry
-                 expect(entry).toBeDefined();  //expects the entry to be defined
+                 const entry = feed.querySelectorAll('.entry');  //gets the all entry using it class name .entry
+                 expect(entry.length).toBeGreaterThan(0);  //expects at least one entry
             });
 
          });
@@ -85,14 +85,18 @@ $(function() {
                  feed.empty();  // clear all statement
                  
                  loadFeed(0, function(){    //load the first feed
+                      
                       firstFeed = feed.find(allFeeds.url);  //get the allFeeds url text
+
+                      loadFeed(1,function(){  //load the second feed
+                      secondFeed = feed.find(allFeeds.url);  //get the allFeeds url text
+                
+                       }); 
+                      
                       done();
                  });
     
-                 loadFeed(1,function(){  //load the second feed
-                     secondFeed = feed.find(allFeeds.url);  //get the allFeeds url text
-                     done();
-                 }); 
+                 
 
             });
 
