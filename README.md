@@ -2,7 +2,7 @@
 This project is given by Udacity to their students to write a test for a web-based application that reads RSS feeds. 
 
 ## How to download
-   click the clone or download button in the github repository to get the files, you can either download the compress file or open the   folder on your desktop, if the compress file was downloaded then you have to unzip the folder in order to load the the index.html
+   Click the clone or download button in the github repository to get the files, you can either download the compress file or open the   folder on your desktop, if the compress file was downloaded then you will have to unzip the folder in order to load the the index.html
    
 ## Resources
  * jasmine 
